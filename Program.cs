@@ -17,7 +17,10 @@ class EntryClass
     {
         DeckManager deckManager = new DeckManager();
         deckManager.IniDeck();
+        deckManager.ShuffleDeck();
+        deckManager.SplitDeck();
 
+        deckManager.DebugDeck();
 
 
 
