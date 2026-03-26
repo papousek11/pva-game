@@ -9,7 +9,6 @@ using OpenTK.Graphics.OpenGL4;
 
 namespace main;
 
-//předem se omlouvam že musíte známkovat tyhle špagety
 class EntryClass
 {
 
@@ -18,12 +17,18 @@ class EntryClass
     static void Main(string[] args)
     {
         DeckManager deckManager = new DeckManager();
+        GLstuffClass gLstuffClass = new GLstuffClass();
+
+        //call window
+        gLstuffClass.OpenWindow();
+
         deckManager.IniDeck();
         deckManager.ShuffleDeck();
         deckManager.SplitDeck();
 
         deckManager.DebugDeck();
 
+        
 
 
     }
