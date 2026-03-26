@@ -1,11 +1,22 @@
 {
   "version": 2,
-  "dgSpecHash": "27Fi6t0Kwhk=",
+  "dgSpecHash": "YjdX6WVfCGs=",
   "success": true,
-  "projectFilePath": "/home/apates/Documents/GitHub/pva-game/game.csproj",
+  "projectFilePath": "/home/apates/Documents/GitHub/pva-game/pva-game.csproj",
   "expectedPackageFiles": [
     "/home/apates/.nuget/packages/newtonsoft.json/13.0.4/newtonsoft.json.13.0.4.nupkg.sha512",
-    "/home/apates/.nuget/packages/raylib-cs/7.0.2/raylib-cs.7.0.2.nupkg.sha512"
+    "/home/apates/.nuget/packages/opentk/4.9.4/opentk.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.audio.openal/4.9.4/opentk.audio.openal.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.compute/4.9.4/opentk.compute.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.core/4.9.4/opentk.core.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.graphics/4.9.4/opentk.graphics.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.input/4.9.4/opentk.input.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.mathematics/4.9.4/opentk.mathematics.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.redist.glfw/3.4.0.44/opentk.redist.glfw.3.4.0.44.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.windowing.common/4.9.4/opentk.windowing.common.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.windowing.desktop/4.9.4/opentk.windowing.desktop.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/opentk.windowing.graphicslibraryframework/4.9.4/opentk.windowing.graphicslibraryframework.4.9.4.nupkg.sha512",
+    "/home/apates/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
