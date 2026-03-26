@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.VisualBasic;
-
+using Raylib_cs;
 
 
 
@@ -12,9 +12,15 @@ class EntryClass
 {
 
 
-
+    
     static void Main(string[] args)
     {
+        DeckManager deckManager = new DeckManager();
+        deckManager.IniDeck();
+
+
+
+
     }
     
 }
