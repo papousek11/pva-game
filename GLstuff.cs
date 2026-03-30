@@ -4,6 +4,7 @@ using Microsoft.VisualBasic;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.OpenGL4;
+using OpenGL;
 
 
 
@@ -25,10 +26,11 @@ class GLstuffClass()
             {
                 // okena
                 GL.ClearColor(0.1f, 0.2f, 0.3f, 1.0f);
+                
             };
             window.RenderFrame += (FrameEventArgs args) =>
             {
-                GL.Clear(ClearBufferMask.ColorBufferBit);
+                GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
                 window.SwapBuffers();
             };
 
@@ -36,5 +38,9 @@ class GLstuffClass()
         }
 
 
+    }
+    public void MolestWindow()
+    {
+        
     }
 }

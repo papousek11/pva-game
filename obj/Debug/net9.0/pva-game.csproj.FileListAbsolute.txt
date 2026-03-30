@@ -30,3 +30,4 @@
 /home/apates/Documents/GitHub/pva-game/obj/Debug/net9.0/pva-game.pdb
 /home/apates/Documents/GitHub/pva-game/obj/Debug/net9.0/pva-game.genruntimeconfig.cache
 /home/apates/Documents/GitHub/pva-game/obj/Debug/net9.0/ref/pva-game.dll
+/home/apates/Documents/GitHub/pva-game/bin/Debug/net9.0/OpenGL.Net.dll
