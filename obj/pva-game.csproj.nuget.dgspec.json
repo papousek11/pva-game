@@ -48,10 +48,6 @@
               "target": "Package",
               "version": "[13.0.4, )"
             },
-            "OpenGL.Net": {
-              "target": "Package",
-              "version": "[0.8.4, )"
-            },
             "OpenTK": {
               "target": "Package",
               "version": "[4.9.4, )"

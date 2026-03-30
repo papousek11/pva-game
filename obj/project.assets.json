@@ -15,19 +15,6 @@
           }
         }
       },
-      "OpenGL.Net/0.8.4": {
-        "type": "package",
-        "compile": {
-          "lib/net461/OpenGL.Net.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net461/OpenGL.Net.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "OpenTK/4.9.4": {
         "type": "package",
         "dependencies": {
@@ -264,25 +251,6 @@
         "packageIcon.png"
       ]
     },
-    "OpenGL.Net/0.8.4": {
-      "sha512": "F7o2KkIrz9rrtBY7+VRgPKnf2mV8pt3h4/o/CWPt86oIocjzKTQFNo2qH4zVYSWyy/T9rS0xBpu9t75MS6wM8Q==",
-      "type": "package",
-      "path": "opengl.net/0.8.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/monoandroid/OpenGL.Net.dll",
-        "lib/monoandroid/OpenGL.Net.xml",
-        "lib/net35/OpenGL.Net.dll",
-        "lib/net35/OpenGL.Net.pdb",
-        "lib/net35/OpenGL.Net.xml",
-        "lib/net461/OpenGL.Net.dll",
-        "lib/net461/OpenGL.Net.pdb",
-        "lib/net461/OpenGL.Net.xml",
-        "opengl.net.0.8.4.nupkg.sha512",
-        "opengl.net.nuspec"
-      ]
-    },
     "OpenTK/4.9.4": {
       "sha512": "fp9ZI6akO4ZuIGzuUE0QRU5zRJhXbSXa5racehFoTdvodhRDecXCOcH68mRsZaMwnxLO9ECnf2LGM9BmiJKvhw==",
       "type": "package",
@@ -495,7 +463,6 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Newtonsoft.Json >= 13.0.4",
-      "OpenGL.Net >= 0.8.4",
       "OpenTK >= 4.9.4"
     ]
   },
@@ -546,10 +513,6 @@
             "target": "Package",
             "version": "[13.0.4, )"
           },
-          "OpenGL.Net": {
-            "target": "Package",
-            "version": "[0.8.4, )"
-          },
           "OpenTK": {
             "target": "Package",
             "version": "[4.9.4, )"
@@ -574,17 +537,5 @@
         "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.312/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'OpenGL.Net 0.8.4' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net9.0'. This package may not be fully compatible with your project.",
-      "libraryId": "OpenGL.Net",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }

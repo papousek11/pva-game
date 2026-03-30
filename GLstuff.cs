@@ -4,7 +4,9 @@ using Microsoft.VisualBasic;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.OpenGL4;
-using OpenGL;
+using System.Net.NetworkInformation;
+using OpenTK.Windowing.Common.Input;
+
 
 
 
@@ -22,6 +24,8 @@ class GLstuffClass()
     {
         using (var window = new GameWindow(GameWindowSettings.Default, nativeWindowSettings))
         {
+            
+            //nativeWindowSettings.Icon = new WindowIcon(new OpenTK.Windowing.Common.Input.Image(255,255,));
             window.Load += () =>
             {
                 // okena
