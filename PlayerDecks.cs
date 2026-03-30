@@ -11,7 +11,7 @@ namespace main;
 
 class PlayerInventory
 {
-
+    
     //ruka
     public List<string> DeckPlayerPlayer = new List<string>{};
     public List<string> DeckPlayerAI1 = new List<string>{};
@@ -26,5 +26,20 @@ class PlayerInventory
     public int PlayerAI2Money;
     public int PlayerAI3Money;
     public int PlayerAI4Money;
+
+    //vypad
+    public bool PlayerPlayerIN;
+    public bool PlayerAI1IN;
+    public bool PlayerAI2IN;
+    public bool PlayerAI3IN;
+    public bool PlayerAI4IN;
+
+    
+    //dealer
+    public bool PlayerPlayerIsDealer;
+    public bool PlayerAI1IsDealer;
+    public bool PlayerAI2IsDealer;
+    public bool PlayerAI3IsDealer;
+    public bool PlayerAI4IsDealer;
 
 }
