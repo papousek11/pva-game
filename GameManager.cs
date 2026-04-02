@@ -6,7 +6,7 @@ using Microsoft.VisualBasic;
 
 class Management
 {
-
+    DeckManager deckManager = new DeckManager();
     
     public void HandCards()
     {
@@ -15,6 +15,52 @@ class Management
         {
             AssingDealer();
             dealer = GetDealerName();
+            deckManager.SplitDeck();
+            List<List<string>> hraci_inv = new List<List<string>>();
+            //fallback safe thingy
+            if (dealer == 40) { AssingDealer(); }
+            hraci_inv.Add(PlayerInventory.DeckPlayerPlayer);
+            hraci_inv.Add(PlayerInventory.DeckPlayerAI1);
+            hraci_inv.Add(PlayerInventory.DeckPlayerAI2);
+            hraci_inv.Add(PlayerInventory.DeckPlayerAI3);
+            hraci_inv.Add(PlayerInventory.DeckPlayerAI4);
+            if (dealer == 5)
+            {
+                for (int e = 0; e < 5; e++)
+                {
+                    for (int d = 0; d < 2; d++)
+                    {
+                        hraci_inv[e].Add(DeckManager.Deck[DeckManager.Deck.Count - 1]);
+                        DeckManager.Deck.RemoveAt(DeckManager.Deck.Count - 1);
+                    }
+                }
+            }
+            else
+            {
+                int y = 0;
+                for (int i = 0; i < 5; i++)
+                {
+                    if (dealer + i > 4)
+                    {
+                        for (int x = 0; x < 2; x++)
+                        {
+                            hraci_inv[y].Add(DeckManager.Deck[DeckManager.Deck.Count - 1]);
+                            DeckManager.Deck.RemoveAt(DeckManager.Deck.Count - 1);
+                        }
+
+                    }
+                    else
+                    {
+                        for (int j = 0; j < 2; j++)
+                        {
+                            hraci_inv[dealer + i].Add(DeckManager.Deck[DeckManager.Deck.Count - 1]);
+                            DeckManager.Deck.RemoveAt(DeckManager.Deck.Count - 1);
+                        }
+                        y++;
+                    }
+                }
+            }
+            
         }
     }   
     public void StartGameWith5Players()
@@ -24,23 +70,23 @@ class Management
   
     public int GetDealerName()
     {
-        if (inventory.PlayerPlayerIsDealer)
+        if (PlayerInventory.PlayerPlayerIsDealer)
         {
             return 1;
         }
-        else if(inventory.PlayerAI1IsDealer)
+        else if(PlayerInventory.PlayerAI1IsDealer)
         {
             return 2;
         }
-        else if(inventory.PlayerAI2IsDealer)
+        else if(PlayerInventory.PlayerAI2IsDealer)
         {
             return 3;
         }
-        else if(inventory.PlayerAI3IsDealer)
+        else if(PlayerInventory.PlayerAI3IsDealer)
         {
             return 4;
         }
-        else if(inventory.PlayerAI4IsDealer)
+        else if(PlayerInventory.PlayerAI4IsDealer)
         {
             return 5;
         }
@@ -60,31 +106,31 @@ class Management
             switch (dealer)
             {
                 case 1:
-                    inventory.PlayerPlayerIsDealer = false;
-                    inventory.PlayerAI1IsDealer = true;
+                    PlayerInventory.PlayerPlayerIsDealer = false;
+                    PlayerInventory.PlayerAI1IsDealer = true;
 
                     break;
                 case 2:
-                    inventory.PlayerAI1IsDealer = false;
-                    inventory.PlayerAI2IsDealer = true;
+                    PlayerInventory.PlayerAI1IsDealer = false;
+                    PlayerInventory.PlayerAI2IsDealer = true;
 
 
                     break;
                 case 3:
-                    inventory.PlayerAI2IsDealer = false;
-                    inventory.PlayerAI3IsDealer = true;
+                    PlayerInventory.PlayerAI2IsDealer = false;
+                    PlayerInventory.PlayerAI3IsDealer = true;
 
 
                     break;
                 case 4:
-                    inventory.PlayerAI3IsDealer = false;
-                    inventory.PlayerAI4IsDealer = true;
+                    PlayerInventory.PlayerAI3IsDealer = false;
+                    PlayerInventory.PlayerAI4IsDealer = true;
 
 
                     break;
                 case 5:
-                    inventory.PlayerAI4IsDealer = false;
-                    inventory.PlayerPlayerIsDealer = true;
+                    PlayerInventory.PlayerAI4IsDealer = false;
+                    PlayerInventory.PlayerPlayerIsDealer = true;
 
 
                     break;
@@ -92,7 +138,7 @@ class Management
         }
         else
         {
-            inventory.PlayerPlayerIsDealer = true;
+            PlayerInventory.PlayerPlayerIsDealer = true;
         }
     }
     public bool CheckIfAll()
