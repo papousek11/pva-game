@@ -12,33 +12,33 @@ class PlayerInventory
 {
     
     //ruka
-    public List<string> DeckPlayerPlayer = new List<string>{};
-    public List<string> DeckPlayerAI1 = new List<string>{};
-    public List<string> DeckPlayerAI2 = new List<string>{};
-    public List<string> DeckPlayerAI3 = new List<string>{};
-    public List<string> DeckPlayerAI4 = new List<string>{};
+    public static List<string> DeckPlayerPlayer = new List<string>{};
+    public static List<string> DeckPlayerAI1 = new List<string>{};
+    public static List<string> DeckPlayerAI2 = new List<string>{};
+    public static List<string> DeckPlayerAI3 = new List<string>{};
+    public static List<string> DeckPlayerAI4 = new List<string>{};
 
 
     //money
-    public int PlayerPlayerMoney;
-    public int PlayerAI1Money;
-    public int PlayerAI2Money;
-    public int PlayerAI3Money;
-    public int PlayerAI4Money;
+    public static int PlayerPlayerMoney;
+    public static int PlayerAI1Money;
+    public static int PlayerAI2Money;
+    public static int PlayerAI3Money;
+    public static int PlayerAI4Money;
 
     //vypad
-    public bool PlayerPlayerIN;
-    public bool PlayerAI1IN;
-    public bool PlayerAI2IN;
-    public bool PlayerAI3IN;
-    public bool PlayerAI4IN;
+    public static bool PlayerPlayerIN;
+    public static bool PlayerAI1IN;
+    public static bool PlayerAI2IN;
+    public  static bool PlayerAI3IN;
+    public static bool PlayerAI4IN;
 
     
     //dealer
-    public bool PlayerPlayerIsDealer;
-    public bool PlayerAI1IsDealer;
-    public bool PlayerAI2IsDealer;
-    public bool PlayerAI3IsDealer;
-    public bool PlayerAI4IsDealer;
+    public static bool PlayerPlayerIsDealer;
+    public static bool PlayerAI1IsDealer;
+    public static  bool PlayerAI2IsDealer;
+    public static bool PlayerAI3IsDealer;
+    public static bool PlayerAI4IsDealer;
 
 }
