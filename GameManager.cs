@@ -6,7 +6,8 @@ using Microsoft.VisualBasic;
 
 class Management
 {
-    PlayerInventory inventory = new PlayerInventory();
+
+    
     public void HandCards()
     {
         int dealer;
@@ -96,7 +97,7 @@ class Management
     }
     public bool CheckIfAll()
     {
-        if(inventory.PlayerPlayerIN & inventory.PlayerAI1IN & inventory.PlayerAI2IN & inventory.PlayerAI3IN & inventory.PlayerAI4IN)
+        if(PlayerInventory.PlayerPlayerIN & PlayerInventory.PlayerAI1IN & PlayerInventory.PlayerAI2IN & PlayerInventory.PlayerAI3IN & PlayerInventory.PlayerAI4IN)
         {
             return true;
         }
@@ -107,7 +108,7 @@ class Management
     }
     public bool DoesAnyoneHaveDealerPin()
     {
-        if(inventory.PlayerPlayerIsDealer & inventory.PlayerAI1IsDealer & inventory.PlayerAI2IsDealer & inventory.PlayerAI3IsDealer & inventory.PlayerAI4IsDealer)
+        if(PlayerInventory.PlayerPlayerIsDealer & PlayerInventory.PlayerAI1IsDealer & PlayerInventory.PlayerAI2IsDealer & PlayerInventory.PlayerAI3IsDealer & PlayerInventory.PlayerAI4IsDealer)
         {
             return true;
         }

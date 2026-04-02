@@ -10,7 +10,7 @@ namespace main;
 //předem se omlouvam že musíte známkovat tyhle špagety
 class DeckManager
 {
-    public List<string> Deck = new List<string> { };
+    public static List<string> Deck = new List<string> { };
     List<string> HolderDeck = new List<string>{};
 
     public void IniDeck()
