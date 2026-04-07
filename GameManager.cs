@@ -1,4 +1,6 @@
 using System.Numerics;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json.Serialization;
 using main;
@@ -62,10 +64,69 @@ class Management
             }
             
         }
+        else
+        {
+            
+            int NumberOfPlayers = HowManyStillInGame();
+            List<bool> holder_list_32 = new List<bool>();
+            List<int> kill_list = new List<int>(); 
+            holder_list_32.Add(PlayerInventory.PlayerPlayerIN);
+            holder_list_32.Add(PlayerInventory.PlayerAI1IN);
+            holder_list_32.Add(PlayerInventory.PlayerAI2IN);
+            holder_list_32.Add(PlayerInventory.PlayerAI3IN);
+            holder_list_32.Add(PlayerInventory.PlayerAI4IN);
+            //Console.WriteLine(holder_list_32.Count.ToString());
+            int sruz = holder_list_32.Count;
+            for(int i = 0; i < sruz;i++)
+            {
+                //Console.WriteLine("for");
+
+                if (holder_list_32[i] == true)
+                {
+                    //Console.WriteLine("debug_true");
+                }
+                else
+                {
+                    //Console.WriteLine("debug_falseS");
+                    kill_list.Add(i);
+                }
+            }
+            kill_list.ForEach(Console.WriteLine);
+            for(int y = 0; y < kill_list.Count;y++)
+            {
+                int z = kill_list[y]-y;
+                //Console.WriteLine("z:"+z);
+                holder_list_32.RemoveAt(z);
+            }
+            holder_list_32.ForEach(Console.WriteLine);
+            kill_list.Clear();
+        }
     }   
     public void StartGameWith5Players()
     {
         HandCards();
+    }
+    public int HowManyStillInGame()
+    {
+        List<bool> holder_list_32 = new List<bool>();
+        
+
+        int return_value = 0;
+        holder_list_32.Add(PlayerInventory.PlayerPlayerIN);
+        holder_list_32.Add(PlayerInventory.PlayerAI1IN);
+        holder_list_32.Add(PlayerInventory.PlayerAI2IN);
+        holder_list_32.Add(PlayerInventory.PlayerAI3IN);
+        holder_list_32.Add(PlayerInventory.PlayerAI4IN);
+        for(int i = holder_list_32.Count-1; i == 0; i--)
+        {
+            if (holder_list_32[i])
+            {
+                return_value++;
+            }
+        }
+        return return_value;
+
+      
     }
   
     public int GetDealerName()

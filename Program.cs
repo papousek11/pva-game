@@ -18,15 +18,18 @@ class EntryClass
     {
         DeckManager deckManager = new DeckManager();
         GLstuffClass gLstuffClass = new GLstuffClass();
+        Management management = new Management();
 
         //call window
-        gLstuffClass.OpenWindow();
+        //gLstuffClass.OpenWindow();
 
         deckManager.IniDeck();
         deckManager.ShuffleDeck();
         deckManager.SplitDeck();
 
         deckManager.DebugDeck();
+
+        management.HandCards();
 
         
 

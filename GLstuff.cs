@@ -37,11 +37,12 @@ class GLstuffClass()
                 GL.Clear(OpenTK.Graphics.OpenGL4.ClearBufferMask.ColorBufferBit);
                 window.SwapBuffers();
             };
-
+            Console.WriteLine("debug");
             window.Run();
+            
         }
-
-
+        
+       
     }
     public void MolestWindow()
     {

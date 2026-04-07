@@ -27,9 +27,9 @@ class PlayerInventory
     public static int PlayerAI4Money;
 
     //vypad
-    public static bool PlayerPlayerIN;
-    public static bool PlayerAI1IN;
-    public static bool PlayerAI2IN;
+    public static bool PlayerPlayerIN = true;
+    public static bool PlayerAI1IN = false;
+    public static bool PlayerAI2IN = true;
     public  static bool PlayerAI3IN;
     public static bool PlayerAI4IN;
 
