@@ -128,6 +128,35 @@ class Management
 
       
     }
+    public bool IsDealerDead()
+    {
+        int dealer = GetDealerName();
+        if(dealer == 1 & PlayerInventory.PlayerPlayerIN == false)
+        {
+            return false;
+        }
+        else if(dealer == 2 & PlayerInventory.PlayerAI1IN == false)
+        {
+            return false;
+        }
+        else if(dealer == 3 & PlayerInventory.PlayerAI2IN == false)
+        {
+            return false;
+        }
+        else if(dealer == 4 & PlayerInventory.PlayerAI3IN == false)
+        {
+            return false;
+        }
+        else if(dealer == 5 & PlayerInventory.PlayerAI4IN == false)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+        
+    }
   
     public int GetDealerName()
     {
@@ -192,6 +221,9 @@ class Management
                 case 5:
                     PlayerInventory.PlayerAI4IsDealer = false;
                     PlayerInventory.PlayerPlayerIsDealer = true;
+                    break;
+                case 40:
+                    PlayerInventory.PlayerPlayerIsDealer = true;
 
 
                     break;
@@ -199,7 +231,82 @@ class Management
         }
         else
         {
-            PlayerInventory.PlayerPlayerIsDealer = true;
+            if (IsDealerDead())
+            {
+                List<bool> Dealer_list = new List<bool>();
+                Dealer_list.Add(PlayerInventory.PlayerPlayerIN);
+                Dealer_list.Add(PlayerInventory.PlayerAI1IN);
+                Dealer_list.Add(PlayerInventory.PlayerAI2IN);
+                Dealer_list.Add(PlayerInventory.PlayerAI3IN);
+                Dealer_list.Add(PlayerInventory.PlayerAI4IN);
+
+                List<bool> Dealer_list_deal = new List<bool>();
+                Dealer_list.Add(PlayerInventory.PlayerPlayerIsDealer);
+                Dealer_list.Add(PlayerInventory.PlayerAI1IsDealer);
+                Dealer_list.Add(PlayerInventory.PlayerAI2IsDealer);
+                Dealer_list.Add(PlayerInventory.PlayerAI3IsDealer);
+                Dealer_list.Add(PlayerInventory.PlayerAI4IsDealer);
+                bool while_hodnota = true;
+                int Dealer_numeb = GetDealerName();
+                while (while_hodnota)
+                {
+                    if(Dealer_numeb == 5)
+                    {
+                        Dealer_numeb = 0;
+                    }
+                    if (Dealer_list[Dealer_numeb])
+                    {
+                        Dealer_list_deal[Dealer_numeb] = true;
+                        while_hodnota = false;
+                    }
+                    else
+                    {
+                        Dealer_numeb++;
+                    }
+                }
+            }
+            else
+            {
+                int g = GetDealerName();
+                if(g == 40)
+                {
+                    PlayerInventory.PlayerPlayerIsDealer = true;
+                }
+                else
+                {
+                    List<bool> Dealer_list = new List<bool>();
+                    Dealer_list.Add(PlayerInventory.PlayerPlayerIN);
+                    Dealer_list.Add(PlayerInventory.PlayerAI1IN);
+                    Dealer_list.Add(PlayerInventory.PlayerAI2IN);
+                    Dealer_list.Add(PlayerInventory.PlayerAI3IN);
+                    Dealer_list.Add(PlayerInventory.PlayerAI4IN);
+
+                    List<bool> Dealer_list_deal = new List<bool>();
+                    Dealer_list.Add(PlayerInventory.PlayerPlayerIsDealer);
+                    Dealer_list.Add(PlayerInventory.PlayerAI1IsDealer);
+                    Dealer_list.Add(PlayerInventory.PlayerAI2IsDealer);
+                    Dealer_list.Add(PlayerInventory.PlayerAI3IsDealer);
+                    Dealer_list.Add(PlayerInventory.PlayerAI4IsDealer);
+                    bool while_hodnota = true;
+                    int Dealer_numeb = GetDealerName();
+                    while (while_hodnota)
+                    {
+                        if(Dealer_numeb == 5)
+                        {
+                            Dealer_numeb = 0;
+                        }
+                        if (Dealer_list[Dealer_numeb])
+                        {
+                            Dealer_list_deal[Dealer_numeb] = true;
+                            while_hodnota = false;
+                        }
+                        else
+                        {
+                            Dealer_numeb++;
+                        }
+                    }
+                }
+            }
         }
     }
     public bool CheckIfAll()
