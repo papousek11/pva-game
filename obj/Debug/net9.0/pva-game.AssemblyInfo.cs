@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pva-game")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b31786e9c404fab706c9f43908a6395203c76035")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+37f4d2d483d2053f762eaab4288fe6f7c637e0a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("pva-game")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pva-game")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

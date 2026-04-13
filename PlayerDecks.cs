@@ -18,6 +18,15 @@ class PlayerInventory
     public static List<string> DeckPlayerAI3 = new List<string>{};
     public static List<string> DeckPlayerAI4 = new List<string>{};
 
+    //i dunno at this point just all alive fuckers thingy my code sucks also the name of the list should explain itself
+    public static List<int> GetMoneOfAlivePeople = new List<int>() { };
+    public static List<bool> GetStatusOfAlivePeople = new List<bool>() { };
+
+
+    //blindy
+    public static int SmallBlind;
+
+    public static int BigBlind;
 
     //money
     public static int PlayerPlayerMoney;
@@ -27,9 +36,9 @@ class PlayerInventory
     public static int PlayerAI4Money;
 
     //vypad
-    public static bool PlayerPlayerIN = true;
-    public static bool PlayerAI1IN = false;
-    public static bool PlayerAI2IN = true;
+    public static bool PlayerPlayerIN;
+    public static bool PlayerAI1IN;
+    public static bool PlayerAI2IN;
     public  static bool PlayerAI3IN;
     public static bool PlayerAI4IN;
 

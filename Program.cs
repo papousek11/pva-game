@@ -11,7 +11,7 @@ namespace main;
 
 class EntryClass
 {
-
+    //dear reader of this mess this codebase is a mess but it mostly works please dont judge
 
     
     static void Main(string[] args)

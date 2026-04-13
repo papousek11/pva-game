@@ -1,5 +1,6 @@
 using System.Numerics;
 using System.Runtime.CompilerServices;
+using System.Runtime.Serialization.DataContracts;
 using System.Runtime.Serialization.Formatters;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json.Serialization;
@@ -9,7 +10,10 @@ using Microsoft.VisualBasic;
 class Management
 {
     DeckManager deckManager = new DeckManager();
+    
 
+
+    //done
     public void HandCards()
     {
         int dealer;
@@ -102,9 +106,60 @@ class Management
             kill_list.Clear();
         }
     }
-    public void StartGameWith5Players()
+    public void purgeTheDead()
     {
+
+        int sruz2 = PlayerInventory.GetMoneOfAlivePeople.Count;
+        List<int> KillList2 = new List<int> { };
+        for (int i = 0; i < sruz2; i++)
+        {
+            //Console.WriteLine("for");
+
+            if (PlayerInventory.GetStatusOfAlivePeople[i] == true)
+            {
+                //Console.WriteLine("debug_true");
+            }
+            else
+            {
+                //Console.WriteLine("debug_falseS");
+                KillList2.Add(i);
+            }
+        }
+        KillList2.ForEach(Console.WriteLine);
+        for (int RndForLoop = 0; RndForLoop < KillList2.Count; RndForLoop++)
+        {
+            int holderForKilling = KillList2[RndForLoop] - RndForLoop;
+            //Console.WriteLine("z:"+z);
+            PlayerInventory.GetMoneOfAlivePeople.RemoveAt(holderForKilling);
+            PlayerInventory.GetStatusOfAlivePeople.RemoveAt(holderForKilling);
+        }
+        KillList2.Clear();
+    }
+    public void StartGame()
+    {
+
+    }
+    public void LetPlayerAction()
+    {
+        
+    }
+    public void GetTheOneWhoPlays()
+    {
+        
+    }
+
+    public void RoundOne()
+    {
+        //we will purge the memebers that arent in the game anymore from the list
+        purgeTheDead();
+        //tahle lajne se vysvětluje sama
         HandCards();
+        //just in case
+        purgeTheDead();
+    }
+    public void PayBlinds()
+    {
+        
     }
     public int HowManyStillInGame()
     {
@@ -333,6 +388,12 @@ class Management
     }
     public void NewGame()
     {
+
+        //blind
+        PlayerInventory.SmallBlind = 200;
+        PlayerInventory.BigBlind = 400;
+
+
         //clear deck
         deckManager.IniDeck();
         deckManager.ShuffleDeck();
@@ -344,6 +405,19 @@ class Management
         PlayerInventory.DeckPlayerAI3.Clear();
         PlayerInventory.DeckPlayerAI4.Clear();
 
+
+        //oživ všechny
+        PlayerInventory.GetMoneOfAlivePeople.Clear();
+
+        PlayerInventory.GetMoneOfAlivePeople.Add(PlayerInventory.PlayerPlayerMoney);
+        PlayerInventory.GetMoneOfAlivePeople.Add(PlayerInventory.PlayerAI1Money);
+        PlayerInventory.GetMoneOfAlivePeople.Add(PlayerInventory.PlayerAI2Money);
+        PlayerInventory.GetMoneOfAlivePeople.Add(PlayerInventory.PlayerAI3Money);
+        PlayerInventory.GetMoneOfAlivePeople.Add(PlayerInventory.PlayerAI4Money);
+
+
+
+        //Dam všem prachus
         PlayerInventory.PlayerPlayerMoney = 10000;
         PlayerInventory.PlayerAI1Money = 10000;
         PlayerInventory.PlayerAI2Money = 10000;
