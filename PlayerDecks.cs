@@ -10,6 +10,17 @@ namespace main;
 
 class PlayerInventory
 {
-    
+    public bool IsIn;
+    public int Money;
+    public bool IsDealer;
+    public string Name;
+    public List<string> PlayerCards = new List<string> { };
+    public PlayerInventory(int money, bool isin, bool isdealer, string name)
+    {
+        Money = money;
+        IsIn = isin;
+        IsDealer = isdealer;
+        Name = name;
+    }
 
 }
