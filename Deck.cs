@@ -15,17 +15,20 @@ class DeckManager
 
     public void IniDeck()
     {
+        Deck.Clear();
+        
         string json = File.ReadAllText("cards.json");
         var list_holder = JsonConvert.DeserializeObject<List<string>>(json);
         if(list_holder != null)
         {
             Deck = list_holder;
-            
+            list_holder.Clear();
         }
         
     }
     public void SplitDeck()
     {
+        HolderDeck.Clear();
         Random rnd = new Random();
         int random  = rnd.Next(23, 26);
         for(int i = 0; i < random; i++)

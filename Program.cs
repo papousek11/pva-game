@@ -23,9 +23,10 @@ class EntryClass
         //call window
         //gLstuffClass.OpenWindow();
 
-        deckManager.IniDeck();
-        deckManager.ShuffleDeck();
-        deckManager.SplitDeck();
+        /* deckManager.IniDeck();
+         deckManager.ShuffleDeck();
+         deckManager.SplitDeck();*/
+        management.NewGame();
 
         deckManager.DebugDeck();
 

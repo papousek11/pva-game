@@ -9,7 +9,7 @@ using Microsoft.VisualBasic;
 class Management
 {
     DeckManager deckManager = new DeckManager();
-    
+
     public void HandCards()
     {
         int dealer;
@@ -62,14 +62,14 @@ class Management
                     }
                 }
             }
-            
+
         }
         else
         {
-            
+
             int NumberOfPlayers = HowManyStillInGame();
             List<bool> holder_list_32 = new List<bool>();
-            List<int> kill_list = new List<int>(); 
+            List<int> kill_list = new List<int>();
             holder_list_32.Add(PlayerInventory.PlayerPlayerIN);
             holder_list_32.Add(PlayerInventory.PlayerAI1IN);
             holder_list_32.Add(PlayerInventory.PlayerAI2IN);
@@ -77,7 +77,7 @@ class Management
             holder_list_32.Add(PlayerInventory.PlayerAI4IN);
             //Console.WriteLine(holder_list_32.Count.ToString());
             int sruz = holder_list_32.Count;
-            for(int i = 0; i < sruz;i++)
+            for (int i = 0; i < sruz; i++)
             {
                 //Console.WriteLine("for");
 
@@ -92,16 +92,16 @@ class Management
                 }
             }
             kill_list.ForEach(Console.WriteLine);
-            for(int y = 0; y < kill_list.Count;y++)
+            for (int y = 0; y < kill_list.Count; y++)
             {
-                int z = kill_list[y]-y;
+                int z = kill_list[y] - y;
                 //Console.WriteLine("z:"+z);
                 holder_list_32.RemoveAt(z);
             }
             holder_list_32.ForEach(Console.WriteLine);
             kill_list.Clear();
         }
-    }   
+    }
     public void StartGameWith5Players()
     {
         HandCards();
@@ -109,7 +109,7 @@ class Management
     public int HowManyStillInGame()
     {
         List<bool> holder_list_32 = new List<bool>();
-        
+
 
         int return_value = 0;
         holder_list_32.Add(PlayerInventory.PlayerPlayerIN);
@@ -117,7 +117,7 @@ class Management
         holder_list_32.Add(PlayerInventory.PlayerAI2IN);
         holder_list_32.Add(PlayerInventory.PlayerAI3IN);
         holder_list_32.Add(PlayerInventory.PlayerAI4IN);
-        for(int i = holder_list_32.Count-1; i == 0; i--)
+        for (int i = holder_list_32.Count - 1; i == 0; i--)
         {
             if (holder_list_32[i])
             {
@@ -126,28 +126,28 @@ class Management
         }
         return return_value;
 
-      
+
     }
     public bool IsDealerDead()
     {
         int dealer = GetDealerName();
-        if(dealer == 1 & PlayerInventory.PlayerPlayerIN == false)
+        if (dealer == 1 & PlayerInventory.PlayerPlayerIN == false)
         {
             return false;
         }
-        else if(dealer == 2 & PlayerInventory.PlayerAI1IN == false)
+        else if (dealer == 2 & PlayerInventory.PlayerAI1IN == false)
         {
             return false;
         }
-        else if(dealer == 3 & PlayerInventory.PlayerAI2IN == false)
+        else if (dealer == 3 & PlayerInventory.PlayerAI2IN == false)
         {
             return false;
         }
-        else if(dealer == 4 & PlayerInventory.PlayerAI3IN == false)
+        else if (dealer == 4 & PlayerInventory.PlayerAI3IN == false)
         {
             return false;
         }
-        else if(dealer == 5 & PlayerInventory.PlayerAI4IN == false)
+        else if (dealer == 5 & PlayerInventory.PlayerAI4IN == false)
         {
             return false;
         }
@@ -155,28 +155,28 @@ class Management
         {
             return true;
         }
-        
+
     }
-  
+
     public int GetDealerName()
     {
         if (PlayerInventory.PlayerPlayerIsDealer)
         {
             return 1;
         }
-        else if(PlayerInventory.PlayerAI1IsDealer)
+        else if (PlayerInventory.PlayerAI1IsDealer)
         {
             return 2;
         }
-        else if(PlayerInventory.PlayerAI2IsDealer)
+        else if (PlayerInventory.PlayerAI2IsDealer)
         {
             return 3;
         }
-        else if(PlayerInventory.PlayerAI3IsDealer)
+        else if (PlayerInventory.PlayerAI3IsDealer)
         {
             return 4;
         }
-        else if(PlayerInventory.PlayerAI4IsDealer)
+        else if (PlayerInventory.PlayerAI4IsDealer)
         {
             return 5;
         }
@@ -250,7 +250,7 @@ class Management
                 int Dealer_numeb = GetDealerName();
                 while (while_hodnota)
                 {
-                    if(Dealer_numeb == 5)
+                    if (Dealer_numeb == 5)
                     {
                         Dealer_numeb = 0;
                     }
@@ -268,7 +268,7 @@ class Management
             else
             {
                 int g = GetDealerName();
-                if(g == 40)
+                if (g == 40)
                 {
                     PlayerInventory.PlayerPlayerIsDealer = true;
                 }
@@ -291,7 +291,7 @@ class Management
                     int Dealer_numeb = GetDealerName();
                     while (while_hodnota)
                     {
-                        if(Dealer_numeb == 5)
+                        if (Dealer_numeb == 5)
                         {
                             Dealer_numeb = 0;
                         }
@@ -311,7 +311,7 @@ class Management
     }
     public bool CheckIfAll()
     {
-        if(PlayerInventory.PlayerPlayerIN & PlayerInventory.PlayerAI1IN & PlayerInventory.PlayerAI2IN & PlayerInventory.PlayerAI3IN & PlayerInventory.PlayerAI4IN)
+        if (PlayerInventory.PlayerPlayerIN & PlayerInventory.PlayerAI1IN & PlayerInventory.PlayerAI2IN & PlayerInventory.PlayerAI3IN & PlayerInventory.PlayerAI4IN)
         {
             return true;
         }
@@ -322,7 +322,7 @@ class Management
     }
     public bool DoesAnyoneHaveDealerPin()
     {
-        if(PlayerInventory.PlayerPlayerIsDealer & PlayerInventory.PlayerAI1IsDealer & PlayerInventory.PlayerAI2IsDealer & PlayerInventory.PlayerAI3IsDealer & PlayerInventory.PlayerAI4IsDealer)
+        if (PlayerInventory.PlayerPlayerIsDealer & PlayerInventory.PlayerAI1IsDealer & PlayerInventory.PlayerAI2IsDealer & PlayerInventory.PlayerAI3IsDealer & PlayerInventory.PlayerAI4IsDealer)
         {
             return true;
         }
@@ -330,5 +330,32 @@ class Management
         {
             return false;
         }
+    }
+    public void NewGame()
+    {
+        //clear deck
+        deckManager.IniDeck();
+        deckManager.ShuffleDeck();
+
+        //reset money a decky the stupid way
+        PlayerInventory.DeckPlayerPlayer.Clear();
+        PlayerInventory.DeckPlayerAI1.Clear();
+        PlayerInventory.DeckPlayerAI2.Clear();
+        PlayerInventory.DeckPlayerAI3.Clear();
+        PlayerInventory.DeckPlayerAI4.Clear();
+
+        PlayerInventory.PlayerPlayerMoney = 10000;
+        PlayerInventory.PlayerAI1Money = 10000;
+        PlayerInventory.PlayerAI2Money = 10000;
+        PlayerInventory.PlayerAI3Money = 10000;
+        PlayerInventory.PlayerAI4Money = 10000;
+
+        PlayerInventory.PlayerPlayerIN = true;
+        PlayerInventory.PlayerAI1IN = true;
+        PlayerInventory.PlayerAI2IN = true;
+        PlayerInventory.PlayerAI3IN = true;
+        PlayerInventory.PlayerAI4IN = true;
+
+        
     }
 }
