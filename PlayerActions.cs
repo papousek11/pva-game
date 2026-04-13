@@ -10,20 +10,5 @@ namespace main;
 
 class PlayerActions
 {
-    public void Call()
-    {
-        
-    }
-    public void Fold()
-    {
-        
-    }
-    public void check()
-    {
-        
-    }
-    public void raise(int RaiseBy)
-    {
-        
-    }
+
 }
