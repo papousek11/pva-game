@@ -13,8 +13,42 @@ class Management
 
 
 
+    public void HandCards()
+    {
+        AssingDealer();
+        int frongus = FindByDealer();
+        int globus = frongus+1;
+        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        {
+            if(globus > IniPlayers.Inventories.Count-1)
+            {
+                globus = 0;
+            }
+            if (IniPlayers.Inventories[globus].IsIn)
+            {
+                for(int y = 2; y > 0; i--)
+                {
+                    IniPlayers.Inventories[globus].PlayerCards.Add(DeckManager.Deck[DeckManager.Deck.Count-1]);
+                    DeckManager.Deck.RemoveAt(DeckManager.Deck.Count-1);
+                }
+            }
 
+            globus++;
+        }
+    }
+    public void FirstRound()
+    {
+        HandCards();
+    }
 
+    public void ClearInbeetweenTurns()
+    {
+        deckManager.SplitDeck();
+        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        {
+            IniPlayers.Inventories[i].IsDealer = false;
+        }
+    }
     public void RestartGame()
     {
 
@@ -25,10 +59,11 @@ class Management
 
 
         //restart player stats
-        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
+        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
         {
             IniPlayers.Inventories[i].IsDealer = false;
             IniPlayers.Inventories[i].IsIn = true;
+            IniPlayers.Inventories[i].Money = 10000;
             IniPlayers.Inventories[i].PlayerCards.Clear();
         }
     }
@@ -38,30 +73,29 @@ class Management
         if (IsDealerGame())
         {
             int DealHold = FindByDealer();
-            int SecondHolder = DealHold;
-            int g = 0;
+            int SecondHolder = DealHold+1;
             
-            for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+            
+            for(int y= 0; y < IniPlayers.Inventories.Count-1; y++)
             {
-                if(g + DealHold > 4)
+                if(SecondHolder> IniPlayers.Inventories.Count-1)
                 {
-                    DealHold = 0;
-                    g = 0;
+                   SecondHolder = 0;
                 }
-                if(IniPlayers.Inventories[g + DealHold].IsDealer = false && IniPlayers.Inventories[g + DealHold].IsIn)
+                if(IniPlayers.Inventories[SecondHolder].IsDealer = false && IniPlayers.Inventories[SecondHolder].IsIn)
                 {
-                    IniPlayers.Inventories[g + DealHold].IsDealer = true;
+                    IniPlayers.Inventories[SecondHolder].IsDealer = true;
                     break;
                 }
-                g++;
+                SecondHolder++;
             }
 
-            IniPlayers.Inventories[SecondHolder].IsDealer = false;
+            IniPlayers.Inventories[DealHold].IsDealer = false;
             
         }
         else
         {
-            for(int i = 0; i < IniPlayers.Inventories.Count; i++)
+            for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
             {
                 if(IniPlayers.Inventories[i].IsIn == true)
                 {
@@ -74,7 +108,7 @@ class Management
 
     public bool IsDealerGame()
     {
-        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
+        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
         {
             if(IniPlayers.Inventories[i].IsDealer == true)
             {

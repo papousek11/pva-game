@@ -95,3 +95,10 @@ C:/Users/Lord David Matoušek/Documents/tower/pva-game/obj/Debug/net9.0/ref/pva-
 /home/apates/Documents/GitHub/pva-game2/obj/Debug/net9.0/pva-game.pdb
 /home/apates/Documents/GitHub/pva-game2/obj/Debug/net9.0/pva-game.genruntimeconfig.cache
 /home/apates/Documents/GitHub/pva-game2/obj/Debug/net9.0/ref/pva-game.dll
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/ImGui.NET.dll
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/StbImageSharp.dll
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/runtimes/linux-x64/native/libcimgui.so
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/runtimes/osx/native/libcimgui.dylib
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/runtimes/win-arm64/native/cimgui.dll
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/runtimes/win-x64/native/cimgui.dll
+/home/apates/Documents/GitHub/pva-game2/bin/Debug/net9.0/runtimes/win-x86/native/cimgui.dll
