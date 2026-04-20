@@ -13,16 +13,15 @@ class DeckManager
     public static List<string> Deck = new List<string> { };
     List<string> HolderDeck = new List<string>{};
 
-    public void IniDeck()
+    public static void IniDeck()
     {
         Deck.Clear();
-        
         string json = File.ReadAllText("cards.json");
         var list_holder = JsonConvert.DeserializeObject<List<string>>(json);
         if(list_holder != null)
         {
             Deck = list_holder;
-            list_holder.Clear();
+            
         }
         
     }
@@ -39,8 +38,9 @@ class DeckManager
             HolderDeck.RemoveAt(0);
         }
     }
-    public void ShuffleDeck()
+    public  void ShuffleDeck()
     {
+        
         Random rnd = new Random();
         int n = Deck.Count;
         while (n > 1) {
