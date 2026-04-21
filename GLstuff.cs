@@ -41,9 +41,13 @@ class GLstuffClass()
 
             controller.Update((float)args.Time);
 
-            ImGui.Begin("Hello");
-            ImGui.Text("It works ");
-            ImGui.Button("Button");
+
+
+
+
+            ImGui.Begin("hbk");
+            //ImGui.Text("It works ");
+            ImGui.Button("nízkoklíčové tlačítko",new Vector2(100,100));
             ImGui.End();
 
             controller.Render();
