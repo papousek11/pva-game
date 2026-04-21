@@ -12,11 +12,12 @@ namespace main;
 class EntryClass
 {
 
-
-    
+   
     static void Main(string[] args)
     {
-
+        GLstuffClass gLstuffClass = new GLstuffClass();
+    
+        gLstuffClass.OpenWindow();
 
     }
     

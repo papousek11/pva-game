@@ -22,7 +22,7 @@ class GLstuffClass()
          var native = new NativeWindowSettings()
         {
             Size = new OpenTK.Mathematics.Vector2i(800, 600),
-            Title = "ImGui Clean Setup"
+            Title = "poker night"
         };
 
         using var window = new GameWindow(GameWindowSettings.Default, native);
@@ -42,7 +42,7 @@ class GLstuffClass()
             controller.Update((float)args.Time);
 
             ImGui.Begin("Hello");
-            ImGui.Text("It works 🎉");
+            ImGui.Text("It works ");
             ImGui.Button("Button");
             ImGui.End();
 
