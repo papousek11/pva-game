@@ -51,11 +51,7 @@ class GLstuffClass()
             window.SwapBuffers();
         };
 
-        window.Resize += e =>
-        {
-            GL.Viewport(0, 0, e.Width, e.Height);
-            controller.Resize(e.Width, e.Height);
-        };
+       
 
         window.Run();
        
