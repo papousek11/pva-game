@@ -107,8 +107,14 @@ class Management
             IniPlayers.Inventories[i].GivenToPot = 0;
         }
     }
+    public void ResetPot()
+    {
+        //jen resetuje pot funce by se měla vysvěttlit sama
+        IniPlayers.pot = 0;
+    }
     public void FirstRound()
     {
+        ResetPot();
         ResetGivenToPot();
         ResetPasses();
         HandCards();
@@ -116,6 +122,7 @@ class Management
     }
     public void ResetPasses()
     {
+        //reset the status of ,,Passing" of all players
         for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
         {
             IniPlayers.Inventories[i].HasPassed = false;
@@ -123,6 +130,7 @@ class Management
     }
     public void ClearInbeetweenTurns()
     {
+        //Clears dealers from all players + splits the deck just like in the super ultra real game named poker(TM)
         deckManager.SplitDeck();
         for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
         {
@@ -132,7 +140,7 @@ class Management
     public void RestartGame()
     {
 
-
+        //should explaint itself
         DeckManager.IniDeck();
         deckManager.ShuffleDeck();
 
@@ -152,10 +160,11 @@ class Management
     {
         if (IsDealerGame())
         {
+            //not sure if this works 100% will find out later
             int DealHold = FindByDealer();
             int SecondHolder = DealHold+1;
             
-            
+            //chci se zabít
             for(int y= 0; y < IniPlayers.Inventories.Count-1; y++)
             {
                 if(SecondHolder> IniPlayers.Inventories.Count-1)
@@ -175,9 +184,10 @@ class Management
         }
         else
         {
-            for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+            //also not sure if this work 100% of times idk
+            for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
             {
-                if(IniPlayers.Inventories[i].IsIn == true)
+                if (IniPlayers.Inventories[i].IsIn == true)
                 {
                     IniPlayers.Inventories[i].IsDealer = true;
                     break;
@@ -188,11 +198,12 @@ class Management
 
     public bool IsDealerGame()
     {
-        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        //the name explains itself
+        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
         {
-            if(IniPlayers.Inventories[i].IsDealer == true)
+            if (IniPlayers.Inventories[i].IsDealer == true)
             {
-                if(IniPlayers.Inventories[i].IsIn == true)
+                if (IniPlayers.Inventories[i].IsIn == true)
                 {
                     return true;
                 }
@@ -207,6 +218,8 @@ class Management
     }
     public int FindByDealer()
     {
+        //najde index objektu hrače podle toho jestli je dealer
+        //finds inxed of the player object by scanning for the IsDealer value
         return IniPlayers.Inventories.FindIndex(s => s.IsDealer == true);
     }
   
