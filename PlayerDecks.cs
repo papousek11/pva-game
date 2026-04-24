@@ -14,6 +14,8 @@ class PlayerInventory
     public int Money;
     public bool IsDealer;
     public string Name;
+    public bool HasPassed;
+    public int GivenToPot;
     public List<string> PlayerCards = new List<string> { };
     public PlayerInventory(int money, bool isin, bool isdealer, string name)
     {

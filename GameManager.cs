@@ -57,11 +57,14 @@ class Management
             {
                 if (IniPlayers.Inventories[globus].Money < IniPlayers.SmallBlindValue)
                 {
+                    IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
+                    SmallBlind = true;
                 }
                 else
                 {
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.SmallBlindValue;
+                    IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.SmallBlindValue;
                     SmallBlind = true;
                 }
             }
@@ -77,11 +80,14 @@ class Management
             {
                 if (IniPlayers.Inventories[globus].Money < IniPlayers.BigBlindValue)
                 {
+                    IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
+                    BigBlind = true;
                 }
                 else
                 {
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.BigBlindValue;
+                    IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.BigBlindValue;
                     BigBlind = true;
                 }
             }
@@ -90,12 +96,31 @@ class Management
 
 
     }
+    public void Actions()
+    {
+        
+    }
+    public void ResetGivenToPot()
+    {
+        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+        {
+            IniPlayers.Inventories[i].GivenToPot = 0;
+        }
+    }
     public void FirstRound()
     {
+        ResetGivenToPot();
+        ResetPasses();
         HandCards();
         Blinds();
     }
-
+    public void ResetPasses()
+    {
+        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+        {
+            IniPlayers.Inventories[i].HasPassed = false;
+        }
+    }
     public void ClearInbeetweenTurns()
     {
         deckManager.SplitDeck();

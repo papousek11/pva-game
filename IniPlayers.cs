@@ -21,4 +21,6 @@ class IniPlayers
     public static int SmallBlindValue = 200;
     public static int BigBlindValue = 300;
 
+    public static int pot = 0;
+
 }
