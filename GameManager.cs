@@ -36,9 +36,64 @@ class Management
             globus++;
         }
     }
+
+    public void Blinds()
+    {
+
+
+
+        int frongus = FindByDealer();
+        int globus = frongus + 1;
+
+        bool BigBlind = false;
+        bool SmallBlind = false;
+        while (SmallBlind == false)
+        {
+            if (globus > IniPlayers.Inventories.Count - 1)
+            {
+                globus = 0;
+            }
+            if (IniPlayers.Inventories[globus].IsIn && IniPlayers.Inventories[globus].IsDealer == false)
+            {
+                if (IniPlayers.Inventories[globus].Money < IniPlayers.SmallBlindValue)
+                {
+                    IniPlayers.Inventories[globus].Money = 0;
+                }
+                else
+                {
+                    IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.SmallBlindValue;
+                    SmallBlind = true;
+                }
+            }
+            globus++;
+        }
+        while (BigBlind == false)
+        {
+            if (globus > IniPlayers.Inventories.Count - 1)
+            {
+                globus = 0;
+            }
+            if (IniPlayers.Inventories[globus].IsIn)
+            {
+                if (IniPlayers.Inventories[globus].Money < IniPlayers.BigBlindValue)
+                {
+                    IniPlayers.Inventories[globus].Money = 0;
+                }
+                else
+                {
+                    IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.BigBlindValue;
+                    BigBlind = true;
+                }
+            }
+            globus++;
+        }
+
+
+    }
     public void FirstRound()
     {
         HandCards();
+        Blinds();
     }
 
     public void ClearInbeetweenTurns()

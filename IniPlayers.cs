@@ -15,7 +15,10 @@ class IniPlayers
     public static PlayerInventory AI2 = new PlayerInventory(10000, true, false, "AI2");
     public static PlayerInventory AI3 = new PlayerInventory(10000, true, false, "AI3");
     public static PlayerInventory AI4 = new PlayerInventory(10000, true, false, "AI4");
-       
-    public static List<PlayerInventory> Inventories = new List<PlayerInventory>{};
+
+    public static List<PlayerInventory> Inventories = new List<PlayerInventory> { };
+
+    public static int SmallBlindValue = 200;
+    public static int BigBlindValue = 300;
 
 }
