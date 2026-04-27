@@ -7,6 +7,7 @@ using OpenTK.Graphics.OpenGL4;
 
 
 
+
 namespace main;
 
 class EntryClass
@@ -15,9 +16,13 @@ class EntryClass
    
     static void Main(string[] args)
     {
+        DeckManager.IniDeck();
+        IniPlayers.deckManager.ShuffleDeck();
         GLstuffClass gLstuffClass = new GLstuffClass();
-    
+        
+      
         gLstuffClass.OpenWindow();
+        
 
     }
     

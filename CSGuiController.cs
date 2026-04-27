@@ -3,6 +3,7 @@ using System.Numerics;
 using ImGuiNET;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using OpenTK.Windowing.Desktop;
 
 namespace main;
 
@@ -44,12 +45,22 @@ public class ImGuiController
         _height = height;
     }
 
-    public void Update(float deltaTime)
+  
+    public void Update(GameWindow window, float deltaTime)
     {
         var io = ImGui.GetIO();
 
-        io.DisplaySize = new System.Numerics.Vector2(Math.Max(_width, 1), Math.Max(_height, 1));
+        io.DisplaySize = new System.Numerics.Vector2(Math.Max(window.Size.X, 1), Math.Max(window.Size.Y, 1));
         io.DeltaTime = Math.Max(deltaTime, 1f / 60f);
+
+        // MOUSE POSITION
+        var mouse = window.MouseState;
+        io.MousePos = new System.Numerics.Vector2(mouse.X, mouse.Y);
+
+         // MOUSE BUTTONS
+        io.MouseDown[0] = mouse.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Left);
+        io.MouseDown[1] = mouse.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Right);
+        io.MouseDown[2] = mouse.IsButtonDown(OpenTK.Windowing.GraphicsLibraryFramework.MouseButton.Middle);
 
         ImGui.NewFrame();
         _frameBegun = true;

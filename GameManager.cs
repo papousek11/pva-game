@@ -15,10 +15,19 @@ class Management
 
     public void HandCards()
     {
+        int globus = 0;
         AssingDealer();
         int frongus = FindByDealer();
-        int globus = frongus+1;
-        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        if(frongus == 0)
+        {
+            globus = 0;
+        }
+        else
+        {
+            globus = frongus+1;
+        }
+        
+        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
         {
             if(globus > IniPlayers.Inventories.Count-1)
             {
@@ -26,13 +35,13 @@ class Management
             }
             if (IniPlayers.Inventories[globus].IsIn)
             {
-                for(int y = 2; y > 0; i--)
+                for(int y = 2; y > 0; y--)
                 {
                     IniPlayers.Inventories[globus].PlayerCards.Add(DeckManager.Deck[DeckManager.Deck.Count-1]);
                     DeckManager.Deck.RemoveAt(DeckManager.Deck.Count-1);
                 }
             }
-
+            Console.WriteLine("kartus");
             globus++;
         }
     }
@@ -58,13 +67,16 @@ class Management
                 if (IniPlayers.Inventories[globus].Money < IniPlayers.SmallBlindValue)
                 {
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
+                    IniPlayers.pot = IniPlayers.pot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
+
                     SmallBlind = true;
                 }
                 else
                 {
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.SmallBlindValue;
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.SmallBlindValue;
+                    IniPlayers.pot = IniPlayers.pot + IniPlayers.SmallBlindValue;
                     SmallBlind = true;
                 }
             }
@@ -81,6 +93,7 @@ class Management
                 if (IniPlayers.Inventories[globus].Money < IniPlayers.BigBlindValue)
                 {
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
+                    IniPlayers.pot = IniPlayers.pot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
                     BigBlind = true;
                 }
@@ -88,6 +101,7 @@ class Management
                 {
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.BigBlindValue;
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.BigBlindValue;
+                    IniPlayers.pot = IniPlayers.pot + IniPlayers.BigBlindValue;
                     BigBlind = true;
                 }
             }
