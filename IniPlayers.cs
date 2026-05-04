@@ -16,7 +16,7 @@ class IniPlayers
     public static PlayerInventory AI3 = new PlayerInventory(10000, true, false, "AI3");
     public static PlayerInventory AI4 = new PlayerInventory(10000, true, false, "AI4");
 
-    public static List<PlayerInventory> Inventories = new List<PlayerInventory> {Player, AI1, AI2, AI3, AI4 };
+    public static List<PlayerInventory> Inventories = new List<PlayerInventory> { Player, AI1, AI2, AI3, AI4 };
 
     public static int SmallBlindValue = 200;
     public static int BigBlindValue = 300;
@@ -28,5 +28,19 @@ class IniPlayers
     public static Management management = new Management();
 
     public static DeckManager deckManager = new DeckManager();
+
+
+
+    //interactions
+    public static PlayerActions P_actions = new PlayerActions();
+    public static AI1G AI1_actions = new AI1G();
+    public static AI2G AI2_actions = new AI2G();
+    public static AI3G AI3_actions = new AI3G();
+    public static AI4G AI4_actions = new AI4G();
+
+
+    public static List<int> interactions = new List<int> { P_actions.ShallWePlay(),AI1_actions.ShallWePlay(),
+        AI2_actions.ShallWePlay(),AI3_actions.ShallWePlay(),AI4_actions.ShallWePlay()};
+    
 
 }

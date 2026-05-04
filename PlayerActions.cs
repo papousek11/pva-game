@@ -4,11 +4,15 @@ using System.Text.Json.Serialization;
 using Microsoft.VisualBasic;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using OpenTK.Graphics.ES20;
+
 
 namespace main;
 
 class PlayerActions
 {
+    public  int ShallWePlay()
+    {
 
+        return 0;
+    }
 }

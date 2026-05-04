@@ -12,33 +12,83 @@ class Management
     DeckManager deckManager = new DeckManager();
 
 
+    public void FirstRound()
+    {
+        ResetPot();
+        ResetGivenToPot();
+        ResetPasses();
+        HandCards();
+        Blinds();
+    }
 
+    public void LetPlayerActionRoundOne()
+    {
+         int frongus = FindByDealer();
+        int globus = frongus + 2;
+        int avlive = NumberAlive();
+        int PlayersPlayed = 0;
+        bool EveryOneDidSomething = false;
+        int choose = 0;
+        while (EveryOneDidSomething == false)
+        {
+            if (PlayersPlayed == avlive)
+            {
+                EveryOneDidSomething = true;
+                break;
+            }
+            if (globus > IniPlayers.Inventories.Count - 1)
+            {
+                globus = 0;
+            }
+            if (IniPlayers.Inventories[globus].IsIn && IniPlayers.Inventories[globus].HasPassed == false)
+            {
+               
+            }
+        }
+
+
+
+
+    }
+    public int NumberAlive()
+    {
+        int values = 0;
+        for (int i = 0; i < IniPlayers.Inventories.Count; i++)
+        {
+            if (IniPlayers.Inventories[i].IsIn && IniPlayers.Inventories[i].HasPassed == false)
+            {
+                values++;
+            }
+        }
+        return values;
+
+    }
     public void HandCards()
     {
         int globus = 0;
         AssingDealer();
         int frongus = FindByDealer();
-        if(frongus == 0)
+        if (frongus == 0)
         {
             globus = 0;
         }
         else
         {
-            globus = frongus+1;
+            globus = frongus + 1;
         }
-        
-        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
+
+        for (int i = 0; i < IniPlayers.Inventories.Count; i++)
         {
-            if(globus > IniPlayers.Inventories.Count-1)
+            if (globus > IniPlayers.Inventories.Count - 1)
             {
                 globus = 0;
             }
             if (IniPlayers.Inventories[globus].IsIn)
             {
-                for(int y = 2; y > 0; y--)
+                for (int y = 2; y > 0; y--)
                 {
-                    IniPlayers.Inventories[globus].PlayerCards.Add(DeckManager.Deck[DeckManager.Deck.Count-1]);
-                    DeckManager.Deck.RemoveAt(DeckManager.Deck.Count-1);
+                    IniPlayers.Inventories[globus].PlayerCards.Add(DeckManager.Deck[DeckManager.Deck.Count - 1]);
+                    DeckManager.Deck.RemoveAt(DeckManager.Deck.Count - 1);
                 }
             }
             Console.WriteLine("kartus");
@@ -110,10 +160,7 @@ class Management
 
 
     }
-    public void Actions()
-    {
-        
-    }
+
     public void ResetGivenToPot()
     {
         for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
@@ -126,20 +173,17 @@ class Management
         //jen resetuje pot funce by se měla vysvěttlit sama
         IniPlayers.pot = 0;
     }
-    public void FirstRound()
-    {
-        ResetPot();
-        ResetGivenToPot();
-        ResetPasses();
-        HandCards();
-        Blinds();
-    }
+    
     public void ResetPasses()
     {
         //reset the status of ,,Passing" of all players
         for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
         {
+            if (IniPlayers.Inventories[i].IsIn == true)
+            {
             IniPlayers.Inventories[i].HasPassed = false;
+           }
+            
         }
     }
     public void ClearInbeetweenTurns()
