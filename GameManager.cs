@@ -29,6 +29,7 @@ class Management
         int PlayersPlayed = 0;
         bool EveryOneDidSomething = false;
         int choose = 0;
+        int holder = 0;
         while (EveryOneDidSomething == false)
         {
             if (PlayersPlayed == avlive)
@@ -42,7 +43,25 @@ class Management
             }
             if (IniPlayers.Inventories[globus].IsIn && IniPlayers.Inventories[globus].HasPassed == false)
             {
-               
+                choose = IniPlayers.interactions[globus];
+                switch (choose)
+                {
+                    //call / check
+                    case 0:
+                        holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
+                        IniPlayers.Inventories[globus].money = IniPlayers.Inventories[globus].money - holder;
+                        break;
+                    //raise
+                    case 1:
+                        holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
+                        IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
+                        IniPlayers.Inventories[globus].money = IniPlayers.Inventories[globus].money - holder - IniPlayers.BigBlindValue;
+                        break;
+                    //fold 
+                    case 2:
+
+                        break;
+                }
             }
         }
 
@@ -145,6 +164,7 @@ class Management
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.pot = IniPlayers.pot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
+                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayer.BigBlindValue;
                     BigBlind = true;
                 }
                 else
@@ -152,6 +172,7 @@ class Management
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.BigBlindValue;
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.BigBlindValue;
                     IniPlayers.pot = IniPlayers.pot + IniPlayers.BigBlindValue;
+                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayer.BigBlindValue;
                     BigBlind = true;
                 }
             }

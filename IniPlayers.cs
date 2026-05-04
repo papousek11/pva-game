@@ -22,6 +22,7 @@ class IniPlayers
     public static int BigBlindValue = 300;
 
     public static int pot = 0;
+    public static int pot_raised_by = 0;
 
     public static int Scene = 0;
 
