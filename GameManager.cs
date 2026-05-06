@@ -49,13 +49,13 @@ class Management
                     //call / check
                     case 0:
                         holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
-                        IniPlayers.Inventories[globus].money = IniPlayers.Inventories[globus].money - holder;
+                        IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder;
                         break;
                     //raise
                     case 1:
                         holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
                         IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
-                        IniPlayers.Inventories[globus].money = IniPlayers.Inventories[globus].money - holder - IniPlayers.BigBlindValue;
+                        IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder - IniPlayers.BigBlindValue;
                         break;
                     //fold 
                     case 2:
@@ -164,7 +164,7 @@ class Management
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.pot = IniPlayers.pot + IniPlayers.Inventories[globus].Money;
                     IniPlayers.Inventories[globus].Money = 0;
-                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayer.BigBlindValue;
+                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
                     BigBlind = true;
                 }
                 else
@@ -172,7 +172,7 @@ class Management
                     IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - IniPlayers.BigBlindValue;
                     IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + IniPlayers.BigBlindValue;
                     IniPlayers.pot = IniPlayers.pot + IniPlayers.BigBlindValue;
-                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayer.BigBlindValue;
+                    IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
                     BigBlind = true;
                 }
             }
