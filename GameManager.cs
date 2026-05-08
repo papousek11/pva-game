@@ -19,50 +19,88 @@ class Management
         ResetPasses();
         HandCards();
         Blinds();
+        LetPlayerActionRoundOne();
     }
 
     public void LetPlayerActionRoundOne()
     {
-         int frongus = FindByDealer();
+        int frongus = FindByDealer();
         int globus = frongus + 2;
         int avlive = NumberAlive();
         int PlayersPlayed = 0;
         bool EveryOneDidSomething = false;
         int choose = 0;
         int holder = 0;
+        Console.WriteLine("we actioning");
         while (EveryOneDidSomething == false)
         {
-            if (PlayersPlayed == avlive)
-            {
-                EveryOneDidSomething = true;
-                break;
-            }
-            if (globus > IniPlayers.Inventories.Count - 1)
+            if (globus == IniPlayers.Inventories.Count)
             {
                 globus = 0;
             }
+            if(IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot == 0)
+            {
+                
+                
+                    PlayersPlayed = PlayersPlayed -1;
+                
+                    
+            }
+            Thread.Sleep(500);
+            if (PlayersPlayed == avlive)
+            {
+                
+                
+                
+                    EveryOneDidSomething = true;
+                    break;
+                
+                
+                
+                
+                   
+                
+                
+            }
+            
+
             if (IniPlayers.Inventories[globus].IsIn && IniPlayers.Inventories[globus].HasPassed == false)
             {
-                choose = IniPlayers.interactions[globus];
+                Console.WriteLine("we got thourgt the if");
+                choose = IniPlayers.interactions[globus]();
+                //Console.WriteLine(choose = IniPlayers.interactions[globus]);
+                Console.WriteLine(globus);
                 switch (choose)
                 {
                     //call / check
                     case 0:
+
                         holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
+                        Console.WriteLine(IniPlayers.Inventories[globus].GivenToPot);
+                        IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + holder;
                         IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder;
+                        IniPlayers.pot = IniPlayers.pot + holder;
+                        PlayersPlayed++;
+                        globus++;
                         break;
                     //raise
                     case 1:
                         holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
                         IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
                         IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder - IniPlayers.BigBlindValue;
+                        IniPlayers.pot = IniPlayers.pot + holder + IniPlayers.BigBlindValue;;
+                        PlayersPlayed++;
+                        globus++;
                         break;
                     //fold 
                     case 2:
 
                         break;
                 }
+                
             }
+            Console.WriteLine(IniPlayers.pot_raised_by);
+            
         }
 
 
@@ -127,7 +165,7 @@ class Management
         bool SmallBlind = false;
         while (SmallBlind == false)
         {
-            if (globus > IniPlayers.Inventories.Count - 1)
+            if (globus > IniPlayers.Inventories.Count -1)
             {
                 globus = 0;
             }

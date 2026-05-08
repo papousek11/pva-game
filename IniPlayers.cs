@@ -32,6 +32,11 @@ class IniPlayers
 
 
 
+    public static int TimeToChooseMRFreeman = 0;
+
+    public static bool IsChoosen = false;
+
+
     //interactions
     public static PlayerActions P_actions = new PlayerActions();
     public static AI1G AI1_actions = new AI1G();
@@ -40,8 +45,16 @@ class IniPlayers
     public static AI4G AI4_actions = new AI4G();
 
 
-    public static List<int> interactions = new List<int> { P_actions.ShallWePlay(),AI1_actions.ShallWePlay(),
-        AI2_actions.ShallWePlay(),AI3_actions.ShallWePlay(),AI4_actions.ShallWePlay()};
+
+
+    public static List<Func<int>> interactions = new List<Func<int>>
+    {
+        P_actions.ShallWePlay,
+        AI1_actions.ShallWePlay,
+        AI2_actions.ShallWePlay,
+        AI3_actions.ShallWePlay,
+        AI4_actions.ShallWePlay
+    };
     
 
 }

@@ -96,6 +96,28 @@ class GLstuffClass()
                     }
                     ImGui.End();
 
+                    ImGui.Begin("Debug Menu");
+
+                    if (IniPlayers.IsChoosen)
+                    {
+                        if(ImGui.Button("call"))
+                        {
+                            IniPlayers.TimeToChooseMRFreeman = 1;
+                            Console.WriteLine("balls");
+                        }
+                        if(ImGui.Button("raise"))
+                        {
+                            IniPlayers.TimeToChooseMRFreeman = 2;
+                        }
+                        if(ImGui.Button("fold"))
+                        {
+                            IniPlayers.TimeToChooseMRFreeman = 3;
+                        }
+                    }
+                    
+                    ImGui.End();
+
+
                 break;
 
 
