@@ -10,7 +10,7 @@ using Microsoft.VisualBasic;
 class Management
 {
     DeckManager deckManager = new DeckManager();
-
+    CardChecking cardChecking = new CardChecking();
 
     public void FirstRound()
     {
@@ -26,9 +26,94 @@ class Management
         RundaSazek();
         GimmeOneForTheRoad();
         RundaSazek();
+        GiveItToTheWinner();
     }
 
+    public void TakeCards()
+    {
+        List<string> HoldIt = new List<string>{};
+        
+    }
 
+    public void GiveItToTheWinner()
+    {
+        bool DoWeSplit = SplitPot();
+        int WinnerPos = WhoGetsItALl();
+        IniPlayers.Inventories[WinnerPos].Money = IniPlayers.Inventories[WinnerPos].Money + IniPlayers.pot;
+        ResetPot();
+        ResetGivenToPot();
+        ResetPasses();
+    }
+    public bool SplitPot()
+    {
+        List<int> scores = new List<int> {};
+        //previous value
+        int waltuh = 0;
+        bool split = false;
+      
+        for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+        {
+            if(IniPlayers.Inventories[y].PlayerCards == null)
+            {
+                scores.Add(0);
+            }
+            else
+            {
+                scores.Add(cardChecking.CheckValue(y));
+
+            }
+            
+        }
+        for(int x= 0; x < scores.Count-1; x++)
+        {
+            if(waltuh < scores[x])
+            {
+                waltuh = scores[x];
+                
+            }
+            if(waltuh == scores[x])
+            {
+                split = true;
+            }
+        }
+        
+        
+        
+        return split;
+    }
+    public int WhoGetsItALl()
+    {
+        
+        List<int> scores = new List<int> {};
+        //previous value
+        int waltuh = 0;
+        int pos = 0;
+        for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+        {
+            if(IniPlayers.Inventories[y].PlayerCards == null)
+            {
+                scores.Add(0);
+            }
+            else
+            {
+                scores.Add(cardChecking.CheckValue(y));
+
+            }
+            
+        }
+        for(int x= 0; x < scores.Count; x++)
+        {
+            if(waltuh < scores[x])
+            {
+                waltuh = scores[x];
+                pos = x;
+            }
+        }
+        
+        
+        Console.WriteLine(pos+"balls");
+        return pos;
+    }
     ///gives three card to the table
     public void GiveThreeToTheTable()
     {
@@ -352,7 +437,7 @@ class Management
 
     public void ResetGivenToPot()
     {
-        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+        for (int i = 0; i < IniPlayers.Inventories.Count ; i++)
         {
             IniPlayers.Inventories[i].GivenToPot = 0;
         }
@@ -366,7 +451,7 @@ class Management
     public void ResetPasses()
     {
         //reset the status of ,,Passing" of all players
-        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+        for (int i = 0; i < IniPlayers.Inventories.Count ; i++)
         {
             if (IniPlayers.Inventories[i].IsIn == true)
             {
@@ -379,7 +464,7 @@ class Management
     {
         //Clears dealers from all players + splits the deck just like in the super ultra real game named poker(TM)
         deckManager.SplitDeck();
-        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
         {
             IniPlayers.Inventories[i].IsDealer = false;
         }
@@ -394,7 +479,7 @@ class Management
 
 
         //restart player stats
-        for(int i = 0; i < IniPlayers.Inventories.Count-1; i++)
+        for(int i = 0; i < IniPlayers.Inventories.Count; i++)
         {
             IniPlayers.Inventories[i].IsDealer = false;
             IniPlayers.Inventories[i].IsIn = true;
@@ -412,7 +497,7 @@ class Management
             int SecondHolder = DealHold+1;
             
             //chci se zabít
-            for(int y= 0; y < IniPlayers.Inventories.Count-1; y++)
+            for(int y= 0; y < IniPlayers.Inventories.Count; y++)
             {
                 if(SecondHolder> IniPlayers.Inventories.Count-1)
                 {
@@ -432,7 +517,7 @@ class Management
         else
         {
             //also not sure if this work 100% of times idk
-            for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+            for (int i = 0; i < IniPlayers.Inventories.Count ; i++)
             {
                 if (IniPlayers.Inventories[i].IsIn == true)
                 {
@@ -446,7 +531,7 @@ class Management
     public bool IsDealerGame()
     {
         //the name explains itself
-        for (int i = 0; i < IniPlayers.Inventories.Count - 1; i++)
+        for (int i = 0; i < IniPlayers.Inventories.Count ; i++)
         {
             if (IniPlayers.Inventories[i].IsDealer == true)
             {
