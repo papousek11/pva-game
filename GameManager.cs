@@ -20,6 +20,17 @@ class Management
         HandCards();
         Blinds();
         LetPlayerActionRoundOne();
+        GiveThreeToTheTable();
+    }
+
+    public void GiveThreeToTheTable()
+    {
+        for(int i =0; i < 3; i++)
+        {
+            IniPlayers.Table.Add(DeckManager.Deck[DeckManager.Deck.Count-1]);
+            DeckManager.Deck.RemoveAt(DeckManager.Deck.Count-1);
+        }
+        
     }
 
     public void LetPlayerActionRoundOne()
@@ -38,14 +49,23 @@ class Management
             {
                 globus = 0;
             }
-            if(IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot == 0)
+            if(IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot > 0 && PlayersPlayed == avlive)
             {
-                
-                
+                if(PlayersPlayed == avlive -1 && IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot == 0)
+                {
+                        EveryOneDidSomething = true;
+                    break;
+                }
+                else
+                {
                     PlayersPlayed = PlayersPlayed -1;
+                    Console.WriteLine("hello");
+                }
+                
                 
                     
             }
+            
             Thread.Sleep(500);
             if (PlayersPlayed == avlive)
             {
@@ -88,6 +108,7 @@ class Management
                         holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
                         IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
                         IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder - IniPlayers.BigBlindValue;
+                        IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + holder + IniPlayers.BigBlindValue;
                         IniPlayers.pot = IniPlayers.pot + holder + IniPlayers.BigBlindValue;;
                         PlayersPlayed++;
                         globus++;

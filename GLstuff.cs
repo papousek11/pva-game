@@ -94,6 +94,13 @@ class GLstuffClass()
                             ImGui.Text("AI4:"+card.ToString());
                         }
                     }
+                    if(IniPlayers.Table.Count > 0)
+                    {
+                        foreach (var card in IniPlayers.Table)
+                        {
+                            ImGui.Text("table:"+card.ToString());
+                        }
+                    }
                     ImGui.End();
 
                     ImGui.Begin("Debug Menu");

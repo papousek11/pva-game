@@ -18,6 +18,10 @@ class IniPlayers
 
     public static List<PlayerInventory> Inventories = new List<PlayerInventory> { Player, AI1, AI2, AI3, AI4 };
 
+    public static List<string> Table = new List<string> {}; 
+
+
+
     public static int SmallBlindValue = 200;
     public static int BigBlindValue = 300;
 

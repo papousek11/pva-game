@@ -1,1 +1,1 @@
-ten soubor CSGuiController.cs je stažený z githubu z IMGUIDOCS
+ten soubor CSGuiController.cs je stažený z githubu z IMGUIDOCS a později upraven pomocí AI aby fungoval s knihovnou OpenTK
