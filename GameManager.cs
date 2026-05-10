@@ -21,8 +21,15 @@ class Management
         Blinds();
         LetPlayerActionRoundOne();
         GiveThreeToTheTable();
+        RundaSazek();
+        GimmeOneForTheRoad();
+        RundaSazek();
+        GimmeOneForTheRoad();
+        RundaSazek();
     }
 
+
+    ///gives three card to the table
     public void GiveThreeToTheTable()
     {
         for(int i =0; i < 3; i++)
@@ -32,7 +39,109 @@ class Management
         }
         
     }
+    //gives one card to the table
+    public void GimmeOneForTheRoad()
+    {
+         IniPlayers.Table.Add(DeckManager.Deck[DeckManager.Deck.Count-1]);
+        DeckManager.Deck.RemoveAt(DeckManager.Deck.Count-1);
+    }
 
+
+    //Player bets that are for all other rounds than the first one
+    public void RundaSazek()
+    {
+        int frongus = FindByDealer();
+        int globus = frongus;
+        int avlive = NumberAlive();
+        int PlayersPlayed = 0;
+        bool EveryOneDidSomething = false;
+        int choose = 0;
+        int holder = 0;
+        Console.WriteLine("we actioning");
+        while (EveryOneDidSomething == false)
+        {
+            if (globus == IniPlayers.Inventories.Count)
+            {
+                globus = 0;
+            }
+            if(IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot > 0 && PlayersPlayed == avlive)
+            {
+                if(PlayersPlayed == avlive -1 && IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot == 0)
+                {
+                        EveryOneDidSomething = true;
+                    break;
+                }
+                else
+                {
+                    PlayersPlayed = PlayersPlayed -1;
+                    Console.WriteLine("hello");
+                }
+                
+                
+                    
+            }
+            
+            Thread.Sleep(500);
+            if (PlayersPlayed == avlive)
+            {
+                
+                
+                
+                    EveryOneDidSomething = true;
+                    break;
+                
+                
+                
+                
+                   
+                
+                
+            }
+            Console.WriteLine(PlayersPlayed + "played");
+            Console.WriteLine(avlive + "played");
+
+            if (IniPlayers.Inventories[globus].IsIn && IniPlayers.Inventories[globus].HasPassed == false)
+            {
+                Console.WriteLine("we got thourgt the if");
+                choose = IniPlayers.interactions[globus]();
+                //Console.WriteLine(choose = IniPlayers.interactions[globus]);
+                Console.WriteLine(globus);
+                switch (choose)
+                {
+                    //call / check
+                    case 0:
+
+                        holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
+                        Console.WriteLine(IniPlayers.Inventories[globus].GivenToPot);
+                        IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + holder;
+                        IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder;
+                        IniPlayers.pot = IniPlayers.pot + holder;
+                        PlayersPlayed++;
+                        globus++;
+                        break;
+                    //raise
+                    case 1:
+                        holder = IniPlayers.pot_raised_by - IniPlayers.Inventories[globus].GivenToPot;
+                        IniPlayers.pot_raised_by = IniPlayers.pot_raised_by + IniPlayers.BigBlindValue;
+                        IniPlayers.Inventories[globus].Money = IniPlayers.Inventories[globus].Money - holder - IniPlayers.BigBlindValue;
+                        IniPlayers.Inventories[globus].GivenToPot = IniPlayers.Inventories[globus].GivenToPot + holder + IniPlayers.BigBlindValue;
+                        IniPlayers.pot = IniPlayers.pot + holder + IniPlayers.BigBlindValue;;
+                        PlayersPlayed++;
+                        globus++;
+                        break;
+                    //fold 
+                    case 2:
+
+                        break;
+                }
+                
+            }
+            Console.WriteLine(IniPlayers.pot_raised_by);
+            
+        }
+    }
+
+    //bets for the first round are in a diffrent void because of the blinds
     public void LetPlayerActionRoundOne()
     {
         int frongus = FindByDealer();
