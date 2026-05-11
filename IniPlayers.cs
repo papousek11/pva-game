@@ -52,8 +52,8 @@ class IniPlayers
     public static AI3G AI3_actions = new AI3G();
     public static AI4G AI4_actions = new AI4G();
 
-
-
+    public static bool NextRoundAllowed = false;
+    public static bool StopThread1 = false;
 
     public static List<Func<int>> interactions = new List<Func<int>>
     {

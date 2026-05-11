@@ -19,6 +19,7 @@ class GLstuffClass()
 {
     
     Thread StartTheGameThread = new Thread(IniPlayers.management.FirstRound);
+    Thread StartTheGameThread2 = new Thread(IniPlayers.management.Otherrounds);
     
     public void OpenWindow()
     {
@@ -104,7 +105,13 @@ class GLstuffClass()
                     ImGui.End();
 
                     ImGui.Begin("Debug Menu");
-
+                    if (IniPlayers.NextRoundAllowed)
+                    {
+                        if(ImGui.Button("Start New Round"))
+                        {
+                           StartTheGameThread2.Start();
+                        }
+                    }
                     if (IniPlayers.IsChoosen)
                     {
                         if(ImGui.Button("call"))
@@ -123,7 +130,9 @@ class GLstuffClass()
                     }
                     
                     ImGui.End();
-
+                    if (IniPlayers.StopThread1)
+                    {
+                    }
 
                 break;
 

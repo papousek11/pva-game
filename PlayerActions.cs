@@ -28,6 +28,11 @@ class PlayerActions
             IniPlayers.IsChoosen = false;
             return 1;
         }
+        else if(IniPlayers.TimeToChooseMRFreeman == 3)
+        {
+            IniPlayers.IsChoosen = false;
+            return 2;
+        }
         else
         {
             IniPlayers.IsChoosen = false;

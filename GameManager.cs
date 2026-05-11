@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.DataContracts;
 using System.Runtime.Serialization.Formatters;
@@ -20,18 +21,107 @@ class Management
         HandCards();
         Blinds();
         LetPlayerActionRoundOne();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
         GiveThreeToTheTable();
         RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
         GimmeOneForTheRoad();
         RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
         GimmeOneForTheRoad();
         RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
         GiveItToTheWinner();
+        IniPlayers.NextRoundAllowed = true;
+        
+        
+    }
+    public void Otherrounds()
+    {
+        TakeCards();
+        IniPlayers.NextRoundAllowed = false;
+        ResetPot();
+        ResetGivenToPot();
+        ResetPasses();
+        HandCards();
+        Blinds();
+        LetPlayerActionRoundOne();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
+        GiveThreeToTheTable();
+        RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
+        GimmeOneForTheRoad();
+        RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
+        GimmeOneForTheRoad();
+        RundaSazek();
+        if (PassedAway()){ GiveItToTheChoosenOne(); }
+        GiveItToTheWinner();
+        IniPlayers.NextRoundAllowed = true;
+    }
+
+    public void GiveItToTheChoosenOne()
+    {
+        for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+        {
+            if(IniPlayers.Inventories[y].HasPassed == false)
+            {
+                IniPlayers.Inventories[y].Money = IniPlayers.Inventories[y].Money + IniPlayers.pot;
+            }
+        }
+        ResetPot();
+        ResetGivenToPot();
+        ResetPasses();
     }
 
     public void TakeCards()
     {
         List<string> HoldIt = new List<string>{};
+
+        for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+        {
+            if(IniPlayers.Inventories[y].PlayerCards != null)
+            {
+                for(int i = 0; i < 2; i++)
+                {
+                    HoldIt.Add(IniPlayers.Inventories[y].PlayerCards[0]);
+                    IniPlayers.Inventories[y].PlayerCards.RemoveAt(0);
+                }
+            }
+        }
+        for(int x = 0; x < 5; x++)
+        {
+            HoldIt.Add(IniPlayers.Table[0]);
+            IniPlayers.Table.RemoveAt(0);
+        }
+        for(int u = 0; u < HoldIt.Count; u++)
+        {
+
+            DeckManager.Deck.Add(HoldIt[0]);
+            HoldIt.RemoveAt(0);
+        }
+
+        
+    }
+    public bool PassedAway()
+    {
+        int plus = 0;
+        for(int y= 0; y < IniPlayers.Inventories.Count; y++)
+        {
+            if(IniPlayers.Inventories[y].HasPassed == false)
+            {
+                plus++;
+            }
+        }
+        if(plus == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
         
     }
 
@@ -216,10 +306,18 @@ class Management
                         break;
                     //fold 
                     case 2:
-
+                         IniPlayers.Inventories[globus].HasPassed = true;
+                        PlayersPlayed++;
+                        globus++;
+                        Console.WriteLine("fold");
                         break;
                 }
                 
+            }
+            else
+            {
+                PlayersPlayed++;
+                globus++;
             }
             Console.WriteLine(IniPlayers.pot_raised_by);
             
@@ -309,10 +407,18 @@ class Management
                         break;
                     //fold 
                     case 2:
-
+                        IniPlayers.Inventories[globus].HasPassed = true;
+                        PlayersPlayed++;
+                        globus++;
+                        Console.WriteLine("fold");
                         break;
                 }
                 
+            }
+            else
+            {
+                PlayersPlayed++;
+                globus++;
             }
             Console.WriteLine(IniPlayers.pot_raised_by);
             
@@ -503,7 +609,7 @@ class Management
                 {
                    SecondHolder = 0;
                 }
-                if(IniPlayers.Inventories[SecondHolder].IsDealer = false && IniPlayers.Inventories[SecondHolder].IsIn)
+                if(IniPlayers.Inventories[SecondHolder].IsDealer == false && IniPlayers.Inventories[SecondHolder].IsIn)
                 {
                     IniPlayers.Inventories[SecondHolder].IsDealer = true;
                     break;
