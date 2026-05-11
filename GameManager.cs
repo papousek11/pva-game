@@ -33,6 +33,7 @@ class Management
         if (PassedAway()){ GiveItToTheChoosenOne(); }
         GiveItToTheWinner();
         IniPlayers.NextRoundAllowed = true;
+        IniPlayers.StopThread1 = true;
         
         
     }
@@ -180,7 +181,11 @@ class Management
         int pos = 0;
         for(int y= 0; y < IniPlayers.Inventories.Count; y++)
         {
-            if(IniPlayers.Inventories[y].PlayerCards == null)
+            if(IniPlayers.Inventories[y].PlayerCards == null  )
+            {
+                scores.Add(0);
+            }
+            else if (IniPlayers.Inventories[y].HasPassed)
             {
                 scores.Add(0);
             }
@@ -314,7 +319,7 @@ class Management
                 }
                 
             }
-            else
+            else if(IniPlayers.Inventories[globus].HasPassed)
             {
                 PlayersPlayed++;
                 globus++;
@@ -415,7 +420,7 @@ class Management
                 }
                 
             }
-            else
+            else if(IniPlayers.Inventories[globus].HasPassed)
             {
                 PlayersPlayed++;
                 globus++;

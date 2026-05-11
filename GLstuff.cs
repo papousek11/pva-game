@@ -49,15 +49,15 @@ class GLstuffClass()
             //BASICLY SCENE MANAGER
             switch (IniPlayers.Scene)
             {
-                //loading screen
+                //debug scene
                 case 0:
 
                     ImGui.Begin("Player Stats");
-                    ImGui.Text("Player:"+IniPlayers.Player.Money);
-                    ImGui.Text("AI1:"+IniPlayers.AI1.Money);
-                    ImGui.Text("AI2:"+IniPlayers.AI2.Money);
-                    ImGui.Text("AI3:"+IniPlayers.AI3.Money);
-                    ImGui.Text("AI4:"+IniPlayers.AI4.Money);
+                    ImGui.Text(IniPlayers.Player.HasPassed +" Player:"+IniPlayers.Player.Money);
+                    ImGui.Text(IniPlayers.AI1.HasPassed+" AI1:"+IniPlayers.AI1.Money);
+                    ImGui.Text(IniPlayers.AI2.HasPassed+" AI2:"+IniPlayers.AI2.Money);
+                    ImGui.Text(IniPlayers.AI3.HasPassed+" AI3:"+IniPlayers.AI3.Money);
+                    ImGui.Text(IniPlayers.AI4.HasPassed+" AI4:"+IniPlayers.AI4.Money);
                     ImGui.Text("POT:"+IniPlayers.pot);
                     if(ImGui.Button("nízkoklíčové tlačítko start"))
                     {
@@ -132,6 +132,7 @@ class GLstuffClass()
                     ImGui.End();
                     if (IniPlayers.StopThread1)
                     {
+                       
                     }
 
                 break;

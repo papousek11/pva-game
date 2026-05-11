@@ -11,6 +11,20 @@ class AI1G
     public  int ShallWePlay()
     {
 
-        return 0;
+
+        Random rnd = new Random();
+        if(rnd.Next(1, 13) < 6)
+        {
+            return 1;
+        }
+        else if(rnd.Next(1, 13) == 1)
+        {
+            return 2;
+        }
+        else
+        {
+            return 0;
+        }
+        
     }
 }
